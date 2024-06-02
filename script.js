@@ -1,10 +1,17 @@
-const body =document.querySelector('body');
-const button =document.querySelector('button');
-const colors=['grey','red', 'black,'green','brown'];
+document.addEventListener('DOMContentLoaded', function() {
+    const colorBox = document.getElementById('color-box');
+    const changeColorBtn = document.getElementById('change-color-btn');
 
-body.style.backgroundColor='violet';
-button.addEventListener('click',function(){
-    const colorIndex=parseInt(Math.random()*colors.length);
-    body.style.backgroundColor=colors[colorIndex];
+    function getRandomColor() {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
 
-})
+    changeColorBtn.addEventListener('click', function() {
+        colorBox.style.backgroundColor = getRandomColor();
+    });
+});
